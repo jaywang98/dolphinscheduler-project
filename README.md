@@ -67,3 +67,73 @@ ds version: 2.0.5
 </center>
 
 #### 5. others
+configuration:
+```shell
+# The directory to install DolphinScheduler for all machine we config above. It will automatically be created by `install.sh` script if not exists.
+# Do not set this configuration same as the current path (pwd)
+installPath="/data1_1T/dolphinscheduler"
+
+# Log path
+logpath="/data1_1T/dolphinscheduler/logs"
+
+# The directory to store local data for all machine we config above. Make sure user `deployUser` have permissions to read and write this directory.
+dataBasedirPath="/tmp/dolphinscheduler"
+
+# resource store on HDFS/S3 path, resource file will store to this hdfs path, self configuration, please make sure the directory exists on hdfs and has read write permissions. "/dolphinscheduler" is recommended
+resourceUploadPath="/dolphinscheduler"
+```
+
+### _aso-alert_ project deployment test
+1. worker group
+   
+DS is allowed to divide workers to organize as work group, and appoint related task executed on specific group.
+
+User need to configure the required environment (such as JAVA_HOME, PYTHON_HOME and so on) in the group to support the program.
+
+   
+2. environment manage
+
+    alert项目需要相关python环境，需要在项目运行服务器上配置python解释器与相关第三方库（利用pyenv与virtualenv）。
+   
+    在ds的ui中，安全中心->环境管理->创建环境，export 相关的python home，如图所示:
+
+   <center>
+      <img src="pic/stat_ds_env.png" width="80%">
+   </center>
+
+3. 资源中心
+   需要上传相关任务依赖文件，资源中心->上传文件。
+
+>   __注意__:
+> 
+> 1. ds仅文件级上传，目前不支持批上传, 如果选用本地存储，直接复制到本地的文件不会映射到资源中心中，hdfs未知
+> 
+> 2. 在ds2.0.5版本中，上传的文件在服务器中存储路径可能会出现错误，倒是导入资源时无法找到相关文件。需重新上传，同时在服务器中个确保文件存在。
+
+   - 服务器：
+      <center>
+         <img src="pic/stat_store_local.png" width="80%">
+      </center>
+   - ui：
+   <center>
+      <img src="pic/stat_store_ui.png" width="80%">
+   </center>
+
+4. 构建，运行工作流
+
+   - DAG
+      <center>
+         <img src="pic/stat_dags.png" width="80%">
+      </center>
+
+   - 上线任务
+      <center>
+         <img src="pic/stat_online.png" width="80%">
+      </center>
+   
+   - 运行结果，日志
+      <center>
+         <img src="pic/stat_run_log.png" width="80%">
+      </center>
+
+钉钉收到相关信息，至此alert aso排名预警任务完成迁徙部署。
