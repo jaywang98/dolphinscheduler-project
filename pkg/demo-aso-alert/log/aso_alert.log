@@ -1,0 +1,36 @@
+[LOG-PATH]: /data1_1T/dolphinscheduler/logs/6311606089056_16/19/32.log, [HOST]:  --
+[INFO] 2022-07-26 07:45:09.918 TaskLogLogger-class --
+[INFO] 2022-07-26 07:45:09.920 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[137] - raw script : echo "start at $(date '+%Y-%m-%d %H:%M:%S')"
+cd alert
+/home/dolphinscheduler/.pyenv/versions/alert/bin/python alert_aso.py -d personal -P daily
+echo "end at $(date '+%Y-%m-%d %H:%M:%S')"
+
+[INFO] 2022-07-26 07:45:09.921 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[138] - task execute path : /tmp/dolphinscheduler/exec/process/6311534217568/6311606089056_16/19/32
+[INFO] 2022-07-26 07:45:09.921 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[86] - tenantCode user:dolphinscheduler, task dir:19_32
+[INFO] 2022-07-26 07:45:09.921 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[91] - create command file:/tmp/dolphinscheduler/exec/process/6311534217568/6311606089056_16/19/32/19_32.command
+[INFO] 2022-07-26 07:45:09.921 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[117] - command : #!/bin/sh
+BASEDIR=$(cd `dirname $0`; pwd)
+cd $BASEDIR
+export PYTHON_HOME=/home/dolphinscheduler/.pyenv/versions/alert/bin/python
+/tmp/dolphinscheduler/exec/process/6311534217568/6311606089056_16/19/32/19_32_node.sh
+[INFO] 2022-07-26 07:45:09.923 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[287] - task run command: sudo -u dolphinscheduler sh /tmp/dolphinscheduler/exec/process/6311534217568/6311606089056_16/19/32/19_32.command
+[INFO] 2022-07-26 07:45:09.924 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[178] - process start, process id is: 17436
+[INFO] 2022-07-26 07:45:10.925 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[66] -  -> welcome to use bigdata scheduling system...
+	start at 2022-07-26 07:45:09
+[INFO] 2022-07-26 07:45:16.026 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[202] - process has exited, execute path:/tmp/dolphinscheduler/exec/process/6311534217568/6311606089056_16/19/32, processId:17436 ,exitStatusCode:0 ,processWaitForStatus:true ,processExitValue:0
+[INFO] 2022-07-26 07:45:16.928 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[66] -  -> 
+	[07-26 daily monitor]
+	[07-26 daily aso monitor]
+	date
+	p0:
+	- 无
+	
+	p1:
+	- 无
+	
+	p2:
+	- 无
+	
+	
+	end at 2022-07-26 07:45:16
+[INFO] 2022-07-26 07:45:16.928 TaskLogLogger-class org.apache.dolphinscheduler.plugin.task.shell.ShellTask:[60] - FINALIZE_SESSION
