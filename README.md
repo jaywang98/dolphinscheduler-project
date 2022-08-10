@@ -314,12 +314,12 @@ __Solution:__
 
 2. _cat /etc/hosts_: ip map
 ```shell
-# 178.128.123.18 backend-pulsar-101
-# 128.199.160.80 backend-pulsar-102
-# 143.198.195.83 backend-pulsar-103
-10.130.144.26 backend-pulsar-101
-10.130.145.44 backend-pulsar-102
-10.130.144.31 backend-pulsar-103
+# -- backend-pulsar-101
+# -- backend-pulsar-102
+# -- backend-pulsar-103
+-- backend-pulsar-101
+-- backend-pulsar-102
+-- backend-pulsar-103
 ```
 
 3. _conf/common.properties_: dolphinscheduler register ip in zookeeper
