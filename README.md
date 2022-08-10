@@ -19,6 +19,7 @@ ___
       - [3. mysql](#3-mysql)
       - [4. dolphin scheduler project](#4-dolphin-scheduler-project)
       - [5. others](#5-others)
+    - [_aso-alert_ project deployment test](#aso-alert-project-deployment-test)
 
 
 ## Main DS Service Composition
@@ -93,24 +94,24 @@ User need to configure the required environment (such as JAVA_HOME, PYTHON_HOME 
    
 2. environment manage
 
-    alert项目需要相关python环境，需要在项目运行服务器上配置python解释器与相关第三方库（利用pyenv与virtualenv）。
+I used pyenv and virtualenv to install the python3.9.4, and ds allow user to export environment variables configs in ui, as shown in following pic.
+
    
-    在ds的ui中，安全中心->环境管理->创建环境，export 相关的python home，如图所示:
+<center>
+   <img src="pic/stat_ds_env.png" width="80%">
+</center>
 
-   <center>
-      <img src="pic/stat_ds_env.png" width="80%">
-   </center>
+3. resources
 
-3. 资源中心
-   需要上传相关任务依赖文件，资源中心->上传文件。
+To run alert project, related resources need to be uploaded. Resources -> upload.
 
->   __注意__:
-> 
-> 1. ds仅文件级上传，目前不支持批上传, 如果选用本地存储，直接复制到本地的文件不会映射到资源中心中，hdfs未知
-> 
-> 2. 在ds2.0.5版本中，上传的文件在服务器中存储路径可能会出现错误，倒是导入资源时无法找到相关文件。需重新上传，同时在服务器中个确保文件存在。
+>   __Attention__:
+> 1. DS 2.0.5 only support upload file level resources and batch upload method is not allowed currently.
+>  Also, if user selects local-storage method for resource, only upoload resource on ui or api are valid,copying file to the target server folder will not map to the meta database.
+> 2. There is a bug in DS 2.0.5 that process cannot find the resource, which may be caused by server saving the upload resources in the error local storage path.
+> Please check it in the server or reupload the resource.
 
-   - 服务器：
+   - Server：
       <center>
          <img src="pic/stat_store_local.png" width="80%">
       </center>
@@ -119,21 +120,17 @@ User need to configure the required environment (such as JAVA_HOME, PYTHON_HOME 
       <img src="pic/stat_store_ui.png" width="80%">
    </center>
 
-4. 构建，运行工作流
-
    - DAG
       <center>
          <img src="pic/stat_dags.png" width="80%">
       </center>
 
-   - 上线任务
+   - Task
       <center>
          <img src="pic/stat_online.png" width="80%">
       </center>
    
-   - 运行结果，日志
+   - Log
       <center>
          <img src="pic/stat_run_log.png" width="80%">
       </center>
-
-钉钉收到相关信息，至此alert aso排名预警任务完成迁徙部署。
